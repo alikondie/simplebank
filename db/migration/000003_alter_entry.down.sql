@@ -1,0 +1,1 @@
+ALTER TABLE transfer ALTER COLUMN account_id DROP NOT NULL;
