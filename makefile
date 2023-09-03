@@ -16,10 +16,17 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:admin@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
+migrateversion:
+	migrate -path db/migration -database "postgresql://root:admin@localhost:5432/simple_bank?sslmode=disable" -verbose version
+
+migrategoto:
+	migrate -path db/migration -database "postgresql://root:admin@localhost:5432/simple_bank?sslmode=disable" -verbose goto $(v)
+
+
 sqlc: 
 	sqlc generate
 
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
+.PHONY: postgres createdb dropdb migrateup migratedown migrateversion sqlc test
