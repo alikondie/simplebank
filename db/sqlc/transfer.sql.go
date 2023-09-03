@@ -7,7 +7,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createTransfer = `-- name: CreateTransfer :one
@@ -15,8 +14,8 @@ INSERT INTO transfer (from_account_id, to_account_id, amount) VALUES ($1, $2, $3
 `
 
 type CreateTransferParams struct {
-	FromAccountID sql.NullInt64
-	ToAccountID   sql.NullInt64
+	FromAccountID int64
+	ToAccountID   int64
 	Amount        int64
 }
 
